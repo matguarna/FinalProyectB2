@@ -1,0 +1,8 @@
+### login
+GET http://localhost:8080/views/login
+
+### Productos
+GET http://localhost:8080/api/productos
+Content-Type: application/json
+
+

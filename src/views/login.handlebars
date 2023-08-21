@@ -1,0 +1,32 @@
+<ul class="menu">
+  <li><a href="http://localhost:8080/views/login">Login</a></li>
+  <li><a href="http://localhost:8080/views/register">Registrarse</a></li>
+  <li><a href="http://localhost:8080/api/session/logout">Logout</a></li>
+  <li><a href="http://localhost:8080/api/productos/paginate">Productos</a></li>
+  <li><a href="http://localhost:8080/views/chat">Chat</a></li>
+  <li><a href="http://localhost:8080/views/addproduct">Agregar producto</a></li>
+  <li><a href="http://localhost:8080/views/deleteproduct">Eliminar producto</a></li>
+</ul>
+
+<div>
+  <h2>Login</h2>
+  <form id="loginForm" action="/api/session/login" method="POST">
+    <label>Email</label>
+    <input type="text" name="email" />
+    <br />
+    <label>Password</label>
+    <input name="password" />
+    <input type="submit" value="Ingresar" />
+  </form>
+  <a href="/api/session/github">Entrar con Github</a>
+</div>
+
+<div>
+  <form id="RecupassForm" action="/api/session/recupass" method="POST">
+    <label>Email</label>
+    <input type="text" name="email" />
+    <input type="submit" value="Recuperar contraseña" />
+  </form>
+</div>
+{{! <script src="/static/js/cookieSetter.js"></script> }}
+{{! <script src="/static/js/index.js"></script> }}

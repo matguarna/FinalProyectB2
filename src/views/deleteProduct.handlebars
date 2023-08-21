@@ -1,0 +1,15 @@
+<style>
+  /* Estilos generales del formulario */ body { background-color: #000; color: #fff; font-family: 'Arial', sans-serif; margin: 0;
+  padding: 0; } form { display: flex; flex-direction: column; max-width: 300px; margin: 0 auto; padding: 20px; background-color:
+  #222; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); } input[type="text"], button { margin-bottom: 10px; padding:
+  10px; font-size: 16px; background-color: #444; border: none; border-radius: 5px; color: #fff; } button { background-color:
+  #ff7b00; cursor: pointer; } button:hover { background-color: #ff7b00; } /* Estilos específicos para los elementos del formulario
+  */ input[type="text"]:focus { outline: none; border-color: #ff7b00; box-shadow: 0 0 5px #ff7b00; } h1 { text-align: center;
+  margin-top: 20px; color: #ff7b00; }
+</style>
+
+<h1>Eliminar Producto</h1>
+<form action="/api/productos/:pid" method="DELETE">
+  <input type="text" name="pid" placeholder="ID del producto" />
+  <button>Submit</button>
+</form>

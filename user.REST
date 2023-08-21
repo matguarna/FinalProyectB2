@@ -1,0 +1,21 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "first_name": "nestjs",
+     "email": "nest@nest.com",
+     "password": "nest1"
+}
+
+####
+POST http://localhost:3000/users/matias?saludo=hola&&mensajito=qonda
+Content-Type: application/json
+
+{
+    "first_name": "nestjs",
+     "email": "nest@nest.com",
+     "password": "nest1"
+}
+
+###
+GET http://localhost:3000/users/1

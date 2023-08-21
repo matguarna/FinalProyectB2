@@ -1,0 +1,166 @@
+paths:
+  /api/usuarios/:
+    get:
+      summary: Obtiene todos los usuarios
+      tags:
+        - Users
+      responses:
+        "200":
+          description: Los usuarios fueron obtenidos exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/User"
+        "500":
+          description: Error interno de server, puede generarse por una query defectuosa
+    post:
+      summary: Crea un usuario sin hashear la password
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/createUser"
+      responses:
+        "201":
+          description: El usuario fue creado correctamente
+
+  /api/usuarios/{uid}:
+    get:
+      summary: Obtiene el usuario por su ID
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: ID del usuario a buscar en la db
+          schema:
+            type: string
+      responses:
+        "200":
+          description: El usuario se obtuvo exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/User"
+    put:
+      summary: Actualiza un usuario por su ID
+      tags:
+        - Users
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: ID del usuario a actualizar en la db
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/updateUser"
+      # responses:
+      #   "200":
+      #     description: El usuario se actualizó exitosamente
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: ID autogenerado por MongoDB
+        first_name:
+          type: string
+          description: Nombre del usuario
+        last_name:
+          type: string
+          description: Apellido del usuario
+        email:
+          type: string
+          description: Email del usuario
+        gender:
+          type: string
+          description: Genero del usuario
+        password:
+          type: string
+          description: Password hasheada del usuario
+        username:
+          type: string
+          description: Username del usuario
+        role:
+          type: string
+          description: Rol del usuario
+      example:
+        _id: ObjectId('64c6de3e6879a42f729b0fd1')
+        first_name: Ricardo
+        last_name: Fort
+        email: bastachicos@miami.com
+        gender: Hombre
+        password: $2b$10$iq20dilZI6EBg0Qy.MgOY.ORV2SaSP6dmkyhmFD8q8mta66mjMtyn
+        username: Rickyfort
+        role: Usuario
+  requestBodies:
+    createUser:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: Nombre del usuario
+        last_name:
+          type: string
+          description: Apellido del usuario
+        email:
+          type: string
+          description: Email del usuario
+        gender:
+          type: string
+          description: Genero del usuario
+        password:
+          type: string
+          description: Password del usuario
+        username:
+          type: string
+          description: Username del usuario
+      example:
+        first_name: Niko
+        last_name: Bellic
+        email: gtaiv@rockstar.com
+        gender: Hombre
+        password: niko123
+        username: nikobellic
+    updateUser:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: Nombre del usuario
+        last_name:
+          type: string
+          description: Apellido del usuario
+        email:
+          type: string
+          description: Email del usuario
+        gender:
+          type: string
+          description: Genero del usuario
+        password:
+          type: string
+          description: Password del usuario
+        username:
+          type: string
+          description: Username del usuario
+      example:
+        first_name: Inserte nombre
+        last_name: Inserte apellido
+        email: nuevomail@update.com
+        gender: Genero
+        password: nuevapass
+        username: nuevousername
